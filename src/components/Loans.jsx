@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import ItemCard from './ItemCard'
 
-const Loans = ({userBalance, setUserBalance}) => {
+const Loans = ({ userBalance, setUserBalance }) => {
   const [loans, setLoans] = useState([])
 
   useEffect(() => {
-    const url = "/pseudoAPI/current-loans.json"
+    const url = "/pseudoAPI/data.json"
 
     const fetchData = async () => {
       try {
@@ -30,7 +30,10 @@ const Loans = ({userBalance, setUserBalance}) => {
         {loans.map(loan =>
           <ItemCard loan={loan} key={loan.id} />
         )}
-        <div className="main__balance"> <p>Total amount available for investment:</p> <p>{ userBalance }</p> </div>
+        <div className="main__balance">
+          <p>Total amount available for investment:</p>
+          <p>${userBalance.toString().split('.').join(',')}</p>
+        </div>
       </div>
     </div>
   )

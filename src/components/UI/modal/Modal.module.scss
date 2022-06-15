@@ -1,0 +1,41 @@
+.modal {
+    position: fixed;
+    z-index: 9999;
+    display: none;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.5);
+
+    &__inner {
+        display: flex;
+        padding: 64px;
+        min-height: 500px;
+        min-width: 628px;
+        position: relative;
+        flex-direction: column;
+        background-color: #fff;
+    }
+
+    &__close_btn {
+        height: 32px;
+        width: 32px;
+        position: absolute;
+        top: 32px;
+        right: 32px;
+        background-color: rgba(0, 0, 0, 0);
+        opacity: 0.5;
+        transition: 0.2s;
+    }
+
+    &__close_btn:hover {
+        opacity: 1;
+    }
+
+    &__active {
+        display: flex;
+    }
+}
