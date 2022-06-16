@@ -2,6 +2,7 @@ import React from 'react'
 import cl from './Modal.module.scss'
 import {ReactComponent as CloseBtn} from '../button/CloseBtn.svg'
 
+
 const Modal = ({ activeModal, setActiveModal, children }) => {
   const rootClasses = [cl.modal]
 
@@ -15,9 +16,9 @@ const Modal = ({ activeModal, setActiveModal, children }) => {
   }
 
   return (
-    <div className={rootClasses.join(' ')} onClick={e => closeModal(e)}>
+    <div className={rootClasses.join(' ')} onClick={closeModal}>
       <div className={cl.modal__inner} onClick={e => e.stopPropagation()}>
-        <button className={cl.modal__close_btn} onClick={e => closeModal(e)}>
+        <button className={cl.modal__close_btn} onClick={closeModal}>
           <CloseBtn />
         </button>
         {children}
@@ -25,5 +26,6 @@ const Modal = ({ activeModal, setActiveModal, children }) => {
     </div>
   )
 }
+
 
 export default Modal

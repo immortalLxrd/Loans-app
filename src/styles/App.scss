@@ -1,6 +1,3 @@
-@import url(./nullstyle.scss);
-@import url(./fonts.scss);
-
 /*Variables*/
 $base-color: rgb(48, 50, 71);
 $border-color: rgba($base-color, 0.1);
@@ -32,6 +29,7 @@ hr {
 
 .main {
     &__title {
+        display: block;
         margin: 32px 64px;
     }
 

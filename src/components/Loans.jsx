@@ -1,29 +1,20 @@
 import React, { useState, useEffect } from 'react'
 import ItemCard from './ItemCard'
+import {fetchData} from '../api/loansAPI'
+
 
 const Loans = ({ userBalance, setUserBalance }) => {
   const [loans, setLoans] = useState([])
 
   useEffect(() => {
-    const url = "/pseudoAPI/data.json"
 
-    const fetchData = async () => {
-      try {
-        const response = await fetch(url)
-        const json = await response.json()
-        setLoans(json.loans)
-      } catch (err) {
-        console.log("Error:", err)
-      }
-    }
-
-    fetchData()
+    fetchData().then(data => setLoans(data))
   }, [])
 
   return (
     <div className='main'>
-      <a href="#main__inner">
-        <h2 className="title main__title">
+      <a className="main__title" href="#main__inner">
+        <h2 className="title">
           Current Loans
         </h2>
       </a>
@@ -42,5 +33,6 @@ const Loans = ({ userBalance, setUserBalance }) => {
     </div>
   )
 }
+
 
 export default Loans
