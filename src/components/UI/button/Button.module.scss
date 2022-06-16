@@ -1,0 +1,17 @@
+@import url(../../../styles/fonts.scss);
+
+
+.btn {
+    padding: 16px 32px;
+    border-radius: 5px;
+    font-family: 'Inter-Medium';
+    text-transform: uppercase;
+    font-size: 20px;
+    font-weight: 500;
+    background-color: #F6E308;
+    transition: 0.2s;
+
+    &:hover {
+        background-color: rgb(255, 240, 0);
+    }
+}

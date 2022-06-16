@@ -1,8 +1,9 @@
 import React from 'react'
+import cl from './Input.module.scss'
 
-const Input = () => {
+const Input = ({...props}) => {
   return (
-    <div>Input</div>
+    <input className={cl.input} {...props}/>
   )
 }
 

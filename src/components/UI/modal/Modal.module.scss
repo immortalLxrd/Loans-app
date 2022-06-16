@@ -2,21 +2,23 @@
     position: fixed;
     z-index: 9999;
     display: none;
+    padding: 20px;
     top: 0;
     bottom: 0;
     right: 0;
     left: 0;
     align-items: center;
     justify-content: center;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(26, 26, 26, .8);
 
     &__inner {
         display: flex;
         padding: 64px;
         min-height: 500px;
-        min-width: 628px;
+        max-width: 628px;
         position: relative;
         flex-direction: column;
+        border-radius: 5px;
         background-color: #fff;
     }
 
@@ -37,5 +39,6 @@
 
     &__active {
         display: flex;
+        overflow: hidden;
     }
 }

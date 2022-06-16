@@ -22,14 +22,18 @@ const Loans = ({ userBalance, setUserBalance }) => {
 
   return (
     <div className='main'>
-      <h2 className="title main__title">
-        Current Loans
-      </h2>
+      <a href="#main__inner">
+        <h2 className="title main__title">
+          Current Loans
+        </h2>
+      </a>
       <hr />
-      <div className="main__inner">
-        {loans.map(loan =>
-          <ItemCard loan={loan} key={loan.id} />
-        )}
+      <div className="main__inner" id="main__inner">
+        <div className="main__loans">
+          {loans.map(loan =>
+            <ItemCard loan={loan} key={loan.id} />
+          )}
+        </div>
         <div className="main__balance">
           <p>Total amount available for investment:</p>
           <p>${userBalance.toString().split('.').join(',')}</p>

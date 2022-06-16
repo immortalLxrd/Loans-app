@@ -3,7 +3,7 @@
 
 /*Variables*/
 $base-color: rgb(48, 50, 71);
-$border-color: rgba($base-color, 10%);
+$border-color: rgba($base-color, 0.1);
 
 /*Main*/
 body {
@@ -21,7 +21,7 @@ h3 {
 }
 
 hr {
-    border-top: 2px solid rgba(48, 50, 71, 10%);
+    border-top: 2px solid $border-color;
     width: 100%;
 }
 
@@ -31,7 +31,6 @@ hr {
 }
 
 .main {
-
     &__title {
         margin: 32px 64px;
     }
@@ -54,12 +53,27 @@ hr {
 
 .card {
     width: 100%;
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 32px;
     padding: 32px;
     border: 2px solid $border-color;
     border-radius: 20px;
+
+    &:not(:last-child) {
+        margin-bottom: 32px;
+    }
+
+    &__inner {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        column-gap: 32px;
+    }
+
+    &__col_1 {
+    }
+
+    &__col_2 {
+        margin-top: auto;
+        margin-left: auto;
+    }
 
     &__title {
         margin-bottom: 16px;
@@ -69,5 +83,26 @@ hr {
     }
 
     &__btn {
+    }
+}
+
+.modal_card {
+    &__inner {
+    }
+    &__list {
+    }
+    &__list_item {
+    }
+    &__list_item:first-child {
+        margin: 32px 0;
+    }
+    &__list_item:not(:first-child) {
+        margin: 8px 0;
+    }
+    &__list_item:last-child {
+        margin-bottom: 64px;
+    }
+    &__title {
+        margin-bottom: 30px;
     }
 }
