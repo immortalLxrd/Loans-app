@@ -3,11 +3,38 @@ import Modal from './UI/modal/Modal'
 import Button from './UI/button/Button'
 import Input from './UI/input/Input'
 
-const ItemCard = ({ loan }) => {
+const ItemCard = ({ loan, userBalance, setUserBalance, setLoans }) => {
     const [activeModal, setActiveModal] = useState(false)
+    const [inputValue, setInputValue] = useState('')
+    const [investMarker, setInvestMarker] = useState(false)
+
+    const rootClasses = ['card__marker']
+
+    if (investMarker) {
+        rootClasses.push('card__marker_active')
+    }
+
+    const updateAmount = (updatedAvailable) => {
+        setLoans(prevState => prevState.map(item => item.id === loan.id ? { ...item, available: updatedAvailable } : item))
+    }
+
+    const invest = (e) => {
+        e.preventDefault()
+
+        let available = parseFloat(loan.available.split(',').join('.'))
+
+        if ((inputValue < 0) || (userBalance < inputValue) || (available < inputValue)) {
+            return
+        }
+
+        setUserBalance((parseFloat(userBalance) - inputValue).toFixed(3))
+        updateAmount((available - inputValue).toFixed(3))
+        setInvestMarker(true)
+    }
 
     return (
         <div className='card'>
+            <p className={rootClasses.join(' ')}>Invested</p>
             <div className="card__inner">
                 <div className="card__col_1">
                     <h3 className="title card__title">
@@ -50,10 +77,12 @@ const ItemCard = ({ loan }) => {
                             <Input
                                 type="number"
                                 placeholder='0,000'
+                                value={inputValue}
+                                onChange={e => setInputValue(parseFloat(e.target.value))}
                             />
                         </div>
                         <div className="card__col_2">
-                            <Button>invest</Button>
+                            <Button onClick={e => invest(e)}>invest</Button>
                         </div>
                     </div>
                 </Modal>

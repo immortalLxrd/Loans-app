@@ -31,7 +31,7 @@ const Loans = ({ userBalance, setUserBalance }) => {
       <div className="main__inner" id="main__inner">
         <div className="main__loans">
           {loans.map(loan =>
-            <ItemCard loan={loan} key={loan.id} />
+            <ItemCard loan={loan} key={loan.id} userBalance={userBalance} setUserBalance={setUserBalance} setLoans={setLoans}/>
           )}
         </div>
         <div className="main__balance">
