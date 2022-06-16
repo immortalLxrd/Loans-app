@@ -58,7 +58,7 @@ const ModalCard = ({ loan, activeModal, setActiveModal, setLoans, setInvestMarke
                     </h3>
                     <Input
                         type="number"
-                        placeholder='0.000'
+                        placeholder='0,000'
                         value={inputValue}
                         onChange={e => setInputValue(parseFloat(e.target.value))}
                     />
