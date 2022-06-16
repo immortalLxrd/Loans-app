@@ -70,6 +70,11 @@ const ItemCard = ({ loan, userBalance, setUserBalance, setLoans }) => {
                                 <li className='modal_card__list_item'>
                                     Annualised return: {loan.annualised_return.toString().split('.').join(',')}%
                                 </li>
+                                <li className='modal_card__list_item'>
+                                    Loan ends in: {Math.floor(loan.term_remaining/2629743) ? 
+                                    `${Math.floor(loan.term_remaining/2629743)} month ${Math.floor(((loan.term_remaining%2629743))/86400)} days` : 
+                                    `${Math.floor(loan.term_remaining/86400)} days`}
+                                </li>
                             </ul>
                             <h3 className="title card__title modal_card__title">
                                 Investment amount
