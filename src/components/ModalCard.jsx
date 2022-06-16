@@ -2,9 +2,14 @@ import React, { useState } from 'react'
 import Modal from './UI/modal/Modal'
 import Button from './UI/button/Button'
 import Input from './UI/input/Input'
+import { useDispatch, useSelector } from 'react-redux'
+import { increment } from '../store/reducers/mainReducer'
 
-const ModalCard = ({ loan, activeModal, setActiveModal, userBalance, setUserBalance, setLoans, setInvestMarker }) => {
+const ModalCard = ({ loan, activeModal, setActiveModal, setLoans, setInvestMarker }) => {
     const [inputValue, setInputValue] = useState('')
+
+    const dispatch = useDispatch()
+    const userBalance = useSelector(state => state.userBalance)
 
     const updateAmount = (updatedAvailable) => {
         setLoans(prevState => prevState.map(item => item.id === loan.id ?
@@ -20,7 +25,7 @@ const ModalCard = ({ loan, activeModal, setActiveModal, userBalance, setUserBala
             return
         }
 
-        setUserBalance((parseFloat(userBalance) - inputValue).toFixed(3))
+        dispatch(increment(inputValue))
         updateAmount((loanAvailable - inputValue).toFixed(3))
         setInvestMarker(true)
     }

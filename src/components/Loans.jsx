@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from 'react'
 import ItemCard from './ItemCard'
 import {fetchData} from '../api/loansAPI'
+import { useSelector } from 'react-redux'
 
 
-const Loans = ({ userBalance, setUserBalance }) => {
+const Loans = () => {
   const [loans, setLoans] = useState([])
 
-  useEffect(() => {
+  const userBalance = useSelector(state => state.userBalance)
 
+  useEffect(() => {
     fetchData().then(data => setLoans(data))
   }, [])
 
@@ -22,7 +24,7 @@ const Loans = ({ userBalance, setUserBalance }) => {
       <div className="main__inner" id="main__inner">
         <div className="main__loans">
           {loans.map(loan =>
-            <ItemCard loan={loan} key={loan.id} userBalance={userBalance} setUserBalance={setUserBalance} setLoans={setLoans}/>
+            <ItemCard loan={loan} key={loan.id} setLoans={setLoans}/>
           )}
         </div>
         <div className="main__balance">

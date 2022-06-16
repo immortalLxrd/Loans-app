@@ -3,7 +3,7 @@ import Button from './UI/button/Button'
 import ModalCard from './ModalCard'
 
 
-const ItemCard = ({ loan, userBalance, setUserBalance, setLoans }) => {
+const ItemCard = ({ loan, setLoans }) => {
     const [activeModal, setActiveModal] = useState(false)
     const [investMarker, setInvestMarker] = useState(false)
 
@@ -39,8 +39,6 @@ const ItemCard = ({ loan, userBalance, setUserBalance, setLoans }) => {
                     loan={loan}
                     activeModal={activeModal}
                     setActiveModal={setActiveModal}
-                    userBalance={userBalance}
-                    setUserBalance={setUserBalance}
                     setLoans={setLoans}
                     setInvestMarker={setInvestMarker}
                 />
